@@ -188,9 +188,62 @@ bool isPalindrome(int x) {
 
 }
 
+string longestPalindrome(string s) {
+
+    if (s.size() == 1) {
+        return s;
+    }
+
+    string pS(1, s[0]);
+
+    string tempString;
+
+    for (int i = 0; i < s.size(); i++) {
+        int counter = 1;
+
+        if (i != 0 && i != s.size() - 1 && s[i - 1] == s[1 + i]) { //odd palindrome
+
+            while (!(i + counter > s.size()) && !(i - counter < 0) && s[i - counter] == s[counter + i]) {
+
+                counter++;
+
+            }
+
+            counter -= 1;
+
+            tempString = s.substr(i - counter, counter * 2 + 1);
+
+            if (tempString.size() > pS.size()) pS = tempString;
+        }
+
+        counter = 1;
+        
+        if (i != s.size() - 1 && s[i] == s[1 + i]) { //even palindrome
+
+            while (!(i + counter > s.size() - 1) && !(i + 1 - counter < 0) && s[i + 1 - counter] == s[counter + i]) {
+
+                counter++;
+
+            }
+
+            counter -= 1;
+
+            tempString = s.substr(i + 1 - counter, counter * 2);
+
+            if (tempString.size() > pS.size()) pS = tempString;
+
+        }
+
+    }
+
+    return pS;
+
+
+}
+
 int main() {
     //vector<int> num1 = {1, 2, 4, 5};
     //vector<int> num2 = {3, 6, 7};
-    cout << isPalindrome(1001);
+    cout << longestPalindrome("abbcccbbbcaaccbababcbcabca");
 	return 0;
 }
