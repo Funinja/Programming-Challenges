@@ -241,9 +241,48 @@ string longestPalindrome(string s) {
 
 }
 
+string convert(string s, int numRows) {
+    if (numRows == 1) return s;
+
+    const int size = numRows;
+    string* rows = new string[size];
+
+
+    for (int i = 0; i < s.size(); i++) {
+
+        if (i < numRows) { //if beginning of string
+
+            rows[i] = string(1, s[i]);
+
+        }
+        else if (i % (numRows * 2 - 2) < size) {
+
+            rows[i % (numRows * 2 - 2)] += string(1, s[i]);
+
+        }
+        else {
+
+            rows[numRows * 2 - 2 - (i % (numRows * 2 - 2))] += string(1, s[i]);
+
+        }
+
+    }
+
+    string total = "";
+
+    for (int i = 0; i < numRows; i++) {
+
+        total += rows[i];
+
+    }
+
+    return total;
+
+}
+
 int main() {
     //vector<int> num1 = {1, 2, 4, 5};
     //vector<int> num2 = {3, 6, 7};
-    cout << longestPalindrome("abbcccbbbcaaccbababcbcabca");
+    cout << convert("AB", 1);
 	return 0;
 }
