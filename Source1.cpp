@@ -4,8 +4,11 @@
 #include<cmath>
 #include<stdbool.h>
 #include <algorithm>
+#include <unordered_map>
 
 using namespace std;
+
+/*misc*/
 
 int lengthOfLongestSubstring(string s) {
     vector<char> stored;
@@ -392,6 +395,36 @@ long repeatedString(string s, long n) {
 
 }*/
 
+/*Dictionaries and Hash Maps*/
+
+void checkMagazine(vector<string> magazine, vector<string> note) {
+
+    unordered_map<string, int> magazineMap;
+
+    for (int i = 0; i < magazine.size(); i++) {
+
+        magazineMap[magazine[i]] += 1;
+
+    }
+
+
+    for (int i = 0; i < note.size(); i++) {
+
+        if (magazineMap[note[i]] <= 0) { // if not found
+            cout << "No";
+            return;
+        }
+        else {
+            magazineMap[note[i]] -= 1;
+        }
+
+    }
+
+    cout << "Yes";
+    return;
+
+}
+
 int main() {
     //vector<int> num1 = {1, 2, 4, 5};
     //vector<int> num2 = {3, 6, 7};
@@ -414,6 +447,8 @@ int main() {
     */
 
     //cout << repeatedString("a", 1000000000000);
+
+    checkMagazine({"two", "times", "three", "is", "not", "four" }, {"two", "times", "two", "is", "four"});
 
     return 0;
 }
