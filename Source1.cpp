@@ -369,6 +369,29 @@ int jumpingOnClouds(vector<int> c) {
 
 }
 
+/*
+// Complete the repeatedString function below.
+long repeatedString(string s, long n) {
+
+    long count = 0;
+
+    for (long i = 0; i < s.size(); i++) {
+
+        if (s[i] == 'a') count += 1;
+    
+    }
+
+    count = count * (n / s.size());
+
+    for (long i = 0; i < (n % s.size()); i++) {
+        if (s[i] == 'a') count += 1;
+    }
+
+    return count;
+
+
+}*/
+
 int main() {
     //vector<int> num1 = {1, 2, 4, 5};
     //vector<int> num2 = {3, 6, 7};
@@ -384,9 +407,13 @@ int main() {
 
     //cout << countingValleys(8, "DDUUUUDD");
 
+    /*
     vector<int> c = {0, 0, 0, 0, 1, 0};
 
     cout << jumpingOnClouds(c);
+    */
+
+    //cout << repeatedString("a", 1000000000000);
 
     return 0;
 }
