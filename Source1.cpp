@@ -3,6 +3,7 @@
 #include <string>
 #include<cmath>
 #include<stdbool.h>
+#include <algorithm>
 
 using namespace std;
 
@@ -280,9 +281,51 @@ string convert(string s, int numRows) {
 
 }
 
+int sockMerchant(int n, vector<int> ar) {
+
+    vector<int> bucket;
+
+    vector<int> values;
+
+    for (int i = 0; i < n; i++) {
+
+        vector<int>::iterator it = find(values.begin(), values.end(), ar[i]);
+
+        if (it != values.end()) { // if found
+
+            bucket[it - values.begin()] += 1;
+
+        }else { //if new
+
+            bucket.push_back(1);
+            values.push_back(ar[i]);
+
+
+        }
+
+    }
+
+    int total = 0;
+
+    for (int j = 0; j < values.size(); j++) {
+
+        total += bucket[j] / 2;
+
+    }
+
+    return total;
+}
+
 int main() {
     //vector<int> num1 = {1, 2, 4, 5};
     //vector<int> num2 = {3, 6, 7};
-    cout << convert("AB", 1);
-	return 0;
+    //cout << convert("AB", 1);
+    int n = 9;
+    vector<int> ar;
+
+    ar = {10, 20, 20, 10, 10, 30, 50, 10, 20};
+
+    cout << sockMerchant(n, ar);
+
+    return 0;
 }
