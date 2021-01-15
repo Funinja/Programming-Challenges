@@ -425,6 +425,32 @@ void checkMagazine(vector<string> magazine, vector<string> note) {
 
 }
 
+// Complete the twoStrings function below.
+string twoStrings(string s1, string s2) {
+    unordered_map<char, int> alphabet;
+
+    for (int i = 0; i < s1.size(); i++) {
+        alphabet[s1[i]] += 1;
+    }
+
+    for (int j = 0; j < s2.size(); j++) {
+
+        if (alphabet[s2[j]] > 0) {
+            return "YES";
+        }
+
+    }
+
+    return "NO";
+
+}
+
+// Complete the sherlockAndAnagrams function below.
+int sherlockAndAnagrams(string s) {
+
+
+}
+
 int main() {
     //vector<int> num1 = {1, 2, 4, 5};
     //vector<int> num2 = {3, 6, 7};
@@ -448,7 +474,11 @@ int main() {
 
     //cout << repeatedString("a", 1000000000000);
 
-    checkMagazine({"two", "times", "three", "is", "not", "four" }, {"two", "times", "two", "is", "four"});
+    //checkMagazine({"two", "times", "three", "is", "not", "four" }, {"two", "times", "two", "is", "four"});
+
+    //cout << twoStrings("ho", "world");
+
+
 
     return 0;
 }
