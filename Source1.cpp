@@ -316,16 +316,50 @@ int sockMerchant(int n, vector<int> ar) {
     return total;
 }
 
+int countingValleys(int steps, string path) {
+
+    int seaLevel = 0;
+    bool inValley = 0;
+
+    int count = 0;
+
+    for (int i = 0; i < path.size(); i++) {
+
+        if (path[i] == 'U') {
+
+            seaLevel += 1;
+            if (seaLevel > -1 && inValley) {
+                inValley = false;
+                count += 1;
+            }
+
+        }
+        else if (path[i] == 'D') {
+
+            seaLevel -= 1;
+            if (seaLevel < 0 && !inValley) inValley = true;
+
+        }
+
+    }
+
+    return count;
+}
+
 int main() {
     //vector<int> num1 = {1, 2, 4, 5};
     //vector<int> num2 = {3, 6, 7};
     //cout << convert("AB", 1);
+    /*
     int n = 9;
     vector<int> ar;
 
     ar = {10, 20, 20, 10, 10, 30, 50, 10, 20};
 
     cout << sockMerchant(n, ar);
+    */
+
+    cout << countingValleys(8, "DDUUUUDD");
 
     return 0;
 }
