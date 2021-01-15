@@ -346,6 +346,29 @@ int countingValleys(int steps, string path) {
     return count;
 }
 
+// Complete the jumpingOnClouds function below.
+int jumpingOnClouds(vector<int> c) {
+
+    int count = 0;
+
+    //jump twice if able always
+
+    for (int i = 0; i < c.size(); i++) { //case 1:
+
+        if (i + 2 < c.size() && c[i + 2] == 0) {
+            
+            i += 1; //skip a section
+
+        }
+        
+        if(i != c.size() - 1)count += 1;
+
+    }
+
+    return count;
+
+}
+
 int main() {
     //vector<int> num1 = {1, 2, 4, 5};
     //vector<int> num2 = {3, 6, 7};
@@ -359,7 +382,11 @@ int main() {
     cout << sockMerchant(n, ar);
     */
 
-    cout << countingValleys(8, "DDUUUUDD");
+    //cout << countingValleys(8, "DDUUUUDD");
+
+    vector<int> c = {0, 0, 0, 0, 1, 0};
+
+    cout << jumpingOnClouds(c);
 
     return 0;
 }
